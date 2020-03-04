@@ -10,19 +10,27 @@
 </head>
 <body>
     <header>
-        <h1>GAME TITLE</h1>
+        <h1>GAME TITLE HERE</h1>
     </header>
 
     <div id="main-container">
+
+        <!-- <div id='start-screen'></div> -->
+
         <div id="info-container" >
             <div id='description'>
-                <h4>Description</h4>
-                <p>blah blah blah blah blah blah blah blah blah blah</p>
+                <p>Humans have been naughty and God is tired of their S#%Ψ!</p>
+                <p>God has decided it's time to destroy the Earth.</p>
+                <p>Help God fire his asteroids and try to hit the Earth to destroy it.</p>
+                <p>Each planet has their own gravity, which is influenced by the distance to the planet and the planet's size.</p>
+                <p>Click somewhere to aim and press FIRE when you're ready.</p>
             </div>
 
             <div id="rules">
-                <h4>Rules</h4>
-                <p>blah blah blah blah blah blah blah blah blah blah</p>
+                <h4>Rules:</h4>
+                <p>- Don't hit any of the other planets.</p>
+                <p>- Don't let the asteroid leave the game screen.</p>
+                <p>- Your final score is your total number of tries.</p>
             </div>
         </div>
 
@@ -31,15 +39,29 @@
         </div>
 
         <div id="control-container">
-            <h4>Controls</h4>
-            <button>Placeholder Button</button>
-            <button>Placeholder Button</button>
-            <button>Placeholder Button</button>
+            <h3>Level:<span id='level-indicator'>0</span></h3>
+            <h3>Tries:<span id='tries-indicator'>0</span></h3>
+            <div id="game-control">
+                
+                <button id='newgame-btn'>New Game</button>
+                <button id='easy-mode'>Easy Mode:<span>Off</span></button>
+                <button id='next-level'>NXT LVL</button>
+                <button id='reset-btn'>Reset Level</button>
+            </div>
+            <div id="fire-control">
+                <div id='aim-info'>
+                    <h5>Angle = <span id='aim-angle'>0</span></h5>
+                    <h5>Power = <span id='aim-power'>0</span></h5>
+                    
+                </div>
+                <button id='fire-btn'>FIRE</button>
+            </div>
         </div>
 
-       
-
     </div>
+    <img id='earth-img' src="./img/earth.png" alt="earth">
+    
+
     <script src="./script/objects.js"></script>
     <script src="./script/game.js"></script>
     <script src="./script/render.js"></script>

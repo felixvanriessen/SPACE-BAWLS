@@ -1,1 +1,3 @@
-@import './style.css'
+@import './mainstyle.css';
+@import './controls.css';
+@import './info.css';
