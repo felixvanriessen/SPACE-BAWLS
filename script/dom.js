@@ -5,7 +5,13 @@ document.querySelector('#newgame-btn').addEventListener('click', function(){
 })
 
 document.querySelector('#next-level').addEventListener('click', function(){
-    myGame.level++
+    if (myGame.level == 13){
+        myGame.level = 0
+        myGame.gameIteration ++
+        
+    } else {
+        myGame.level++
+    }
     myGame.reset()
 })
 
@@ -67,14 +73,14 @@ document.querySelector('#fire-btn').addEventListener('click', function(){
     myGame.numberOfTries++
 })
 
-document.addEventListener('keypress', function(event){
-    if (event.coed === 'Space') {
-        myGame.shooting()
-        myGame.shoot = true
-        myGame.aim = false
-        myGame.numberOfTries++
-    }
-})
+// document.addEventListener('keypress', function(event){
+//     if (event.code === 'Space') {
+//         myGame.shooting()
+//         myGame.shoot = true
+//         myGame.aim = false
+//         myGame.numberOfTries++
+//     }
+// })
 
 
 

@@ -26,7 +26,9 @@ class Game {
             [[200,200,15], [300,400,10], [300,600,20], [700,300,20]],
             [[200,200,10],[200,500,10],[300,300,10],[600,600,10],[500,500,10],[700,300,10],[400,400,10],[600,200,10]], // 10
             [[500,400,30], [350,400,10]],
-            [[500,400,20], [100,400,9], [50,400,1.2]]
+            [[500,400,20], [200,400,10], [800,400,10]],
+            [[400,400,20],[700,400,20]],
+            [[300,400,20],[700,400,20],[500,200,20],[500,600,20]]
         ]
 
         this.targets = [
@@ -41,8 +43,9 @@ class Game {
             [900,500,30],
             [900,500,30], // 10
             [900,500,30],
-            [900,500,30]
-
+            [900,500,30],
+            [900,500,30],
+            [900,500,30]      
         ]
         this.target = {
             x:0,
@@ -67,6 +70,12 @@ class Game {
 
         asteroid.init()
         this.createLevel(this.level)
+    }
+
+    endGame(){
+        this.makeNewGame()
+        this.gameIteration = 0
+        this.level = 0
     }
 
     reset(){
@@ -95,9 +104,16 @@ class Game {
         if (this.level == 10){
             this.planets[1].vy = 5
         } else if (this.level == 11){
-            this.planets[1].vy = 1.5
-            this.planets[2].vy = 3.5
-            this.planets[2].vx = 0.5
+            this.planets[1].vy = 2.2
+            this.planets[2].vy = -2.2
+        } else if (this.level == 12){
+            this.planets[0].vy = 1.5
+            this.planets[1].vy = -1.5
+        } else if(this.level == 13){
+            this.planets[0].vy = 3
+            this.planets[1].vy = -3
+            this.planets[2].vx = -3
+            this.planets[3].vx = 3
         }
 
         
@@ -137,7 +153,6 @@ class Game {
         this.target.x = this.targets[this.level][0]
         this.target.y = this.targets[this.level][1]
         this.target.m = this.targets[this.level][2] - (5 * this.gameIteration)
-        console.log(this.target.m)
     }
 
     targetHandler(){
@@ -157,7 +172,6 @@ class Game {
                 this.level++
                 this.reset()
             } else {
-                
                 this.level = 0
                 this.makeNewGame()
                 this.gameIteration++ 
@@ -178,6 +192,28 @@ class Game {
             this.planets[2].gravityTo(this.planets[0])
             this.planets[2].gravityTo(this.planets[1])
             this.planets[2].move()
+        } else if (this.level == 12){
+            this.planets[0].gravityTo(this.planets[1])
+            this.planets[1].gravityTo(this.planets[0])
+            this.planets[0].move()
+            this.planets[1].move()
+        } else if (this.level == 13){
+            this.planets[0].gravityTo(this.planets[1])
+            this.planets[0].gravityTo(this.planets[2])
+            this.planets[0].gravityTo(this.planets[3])
+            this.planets[1].gravityTo(this.planets[0])
+            this.planets[1].gravityTo(this.planets[2])
+            this.planets[1].gravityTo(this.planets[3])
+            this.planets[2].gravityTo(this.planets[0])
+            this.planets[2].gravityTo(this.planets[1])
+            this.planets[2].gravityTo(this.planets[3])
+            this.planets[3].gravityTo(this.planets[0])
+            this.planets[3].gravityTo(this.planets[1])
+            this.planets[3].gravityTo(this.planets[2])
+            this.planets[0].move()
+            this.planets[1].move()
+            this.planets[2].move()
+            this.planets[3].move()
         }
 
 
@@ -203,9 +239,11 @@ class Game {
             }
         } else {
             if (asteroid.x > 1000 || asteroid.x < 0){
+                debugger
                 this.reset()
             }
             if (asteroid.y > 800 || asteroid.y < 0) {
+                debugger
                 this.reset()
             }
         }

@@ -149,7 +149,6 @@ class Planet {
     }
 
     gravityTo(planet){
-        debugger
         let distx = this.x - planet.x
         let disty = this.y - planet.y
         let dist = Math.sqrt((distx * distx) + (disty * disty))
