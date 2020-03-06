@@ -2,6 +2,9 @@
 document.querySelector('#newgame-btn').addEventListener('click', function(){
     myGame.gameIteration = 0
     myGame.makeNewGame()
+    if (document.querySelector('#dev-tools').value == 'helloworld'){
+        document.querySelector('#next-level').style.display = 'block'
+    }
 })
 
 document.querySelector('#next-level').addEventListener('click', function(){
@@ -73,14 +76,7 @@ document.querySelector('#fire-btn').addEventListener('click', function(){
     myGame.numberOfTries++
 })
 
-// document.addEventListener('keypress', function(event){
-//     if (event.code === 'Space') {
-//         myGame.shooting()
-//         myGame.shoot = true
-//         myGame.aim = false
-//         myGame.numberOfTries++
-//     }
-// })
+
 
 
 
